@@ -1,1 +1,1 @@
-# student-survival-guides
+# International Students Survival Guides Platform
