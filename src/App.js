@@ -5,8 +5,8 @@ import { MainPage } from "./pages/MainPage"
 import { PostsPage } from "./pages/PostsPage"
 import { PostPage } from "./pages/PostPage"
 import { AddPostPage } from "./pages/AddPostPage"
-import { RegisterPage } from "./pages/RegisterPage"
-import { LoginPage } from "./pages/LoginPage"
+import { RegisterPage } from "./pages/RegisterPage/RegisterPage"
+import { LoginPage } from "./pages/LoginPage/LoginPage"
 import { EditPostPage } from "./pages/EditPostPage"
 
 function App() {
