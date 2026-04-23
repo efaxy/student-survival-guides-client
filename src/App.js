@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import { MainPage } from './pages/MainPage/MainPage'
 import { PostsPage } from './pages/PostsPage'
-import { PostPage } from './pages/PostPage'
+import { PostPage } from './pages/PostPage/PostPage'
 import { AddPostPage } from './pages/AddPostPage/AddPostPage'
 import { RegisterPage } from './pages/RegisterPage/RegisterPage'
 import { LoginPage } from './pages/LoginPage/LoginPage'
