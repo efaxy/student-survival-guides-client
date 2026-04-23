@@ -10,7 +10,6 @@ export const PostItem = ({ post }) => {
 
 	return (
 		<div className="post-card">
-			<div className="post-image">IMAGE</div>
 
 			<div className="post-meta">
 				<div className="post-username">{post.username}</div>
