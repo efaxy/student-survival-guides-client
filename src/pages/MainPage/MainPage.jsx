@@ -2,6 +2,7 @@ import React from 'react'
 import './MainPage.css'
 import { PostItem } from '../../components/PostItem/PostItem'
 import { PopularPosts } from '../../components/PopularPosts/PopularPosts'
+import Moment from 'react-moment'
 
 export const MainPage = () => {
 	const posts = []
@@ -15,7 +16,9 @@ export const MainPage = () => {
 		<div className="main-container">
 			<div className="posts-layout">
 				<div className="posts-main">
-					<PostItem />
+					{posts?.map((post, idx) => (
+						<PostItem key={idx} post={post} />
+					))}
 				</div>
 
 				<div className="posts-sidebar">

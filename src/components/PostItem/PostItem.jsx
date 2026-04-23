@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiFillEye, AiOutlineMessage } from 'react-icons/ai'
 import './PostItem.css'
+import Moment from 'react-moment'
 
 export const PostItem = ({ post }) => {
 	if (!post) {
@@ -13,7 +14,9 @@ export const PostItem = ({ post }) => {
 
 			<div className="post-meta">
 				<div className="post-username">{post.username}</div>
-				<div className="post-date">{post.createdAt}</div>
+				<div className="post-date">
+					<Moment data={post.createdAt} format="DD MMM YYYY" />
+				</div>
 			</div>
 
 			<div className="post-title">{post.title}</div>
@@ -24,7 +27,8 @@ export const PostItem = ({ post }) => {
 					<AiFillEye /> <span>{post.views}</span>
 				</button>
 				<button className="action-button">
-					<AiOutlineMessage /> <span>{post.comments?.length}</span>
+					<AiOutlineMessage />{' '}
+					<span>{post.comments?.length || 0}</span>
 				</button>
 			</div>
 		</div>
