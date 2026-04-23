@@ -1,9 +1,7 @@
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #141E30;
-  background: linear-gradient(to right, #243B55, #141E30);
-  background: -webkit-linear-gradient(to right, #243B55, #141E30);
-  min-height: 100vh;
+	font-family: 'Poppins', sans-serif;
+	background-color: #141e30;
+	background: linear-gradient(to right, #243b55, #141e30);
+	background: -webkit-linear-gradient(to right, #243b55, #141e30);
+	min-height: 100vh;
 }
-
-
