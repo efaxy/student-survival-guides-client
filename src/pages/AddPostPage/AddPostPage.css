@@ -1,0 +1,67 @@
+.addPostPage {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 24px;
+	width: 100%;
+	max-width: 600px;
+	margin: 40px auto;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	box-sizing: border-box;
+	color: #ffffff;
+}
+
+.title,
+.text {
+	display: flex;
+	flex-direction: column;
+	font-size: 16px;
+	font-weight: 500;
+	gap: 12px;
+	letter-spacing: 0.5px;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.for-title,
+.for-text {
+	width: 100%;
+	padding: 16px;
+	font-size: 16px;
+	font-family: inherit;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 12px;
+	color: #ffffff;
+	outline: none;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+}
+
+.for-title::placeholder,
+.for-text::placeholder {
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.for-title:hover,
+.for-text:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.for-title:focus,
+.for-text:focus {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+	transform: translateY(-1px);
+}
+
+.for-text {
+	min-height: 200px;
+	resize: vertical;
+	line-height: 1.5;
+}
