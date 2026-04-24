@@ -2,14 +2,22 @@ import { Layout } from './components/Layout'
 import { Route, Routes } from 'react-router-dom'
 
 import { MainPage } from './pages/MainPage/MainPage'
-import { PostsPage } from './pages/PostsPage'
+import { PostsPage } from './pages/PostsPage/PostsPage'
 import { PostPage } from './pages/PostPage/PostPage'
 import { AddPostPage } from './pages/AddPostPage/AddPostPage'
 import { RegisterPage } from './pages/RegisterPage/RegisterPage'
 import { LoginPage } from './pages/LoginPage/LoginPage'
-import { EditPostPage } from './pages/EditPostPage'
+import { EditPostPage } from './pages/EditPostPage/EditPostPage'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 function App() {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(getMe())
+	}, [dispatch])
+
 	return (
 		<Layout>
 			<Routes>
