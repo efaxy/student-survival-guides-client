@@ -29,54 +29,57 @@ export const Navbar = () => {
 	return (
 		<div className="navbar">
 			{/* App Logo */}
-			<span className="logo">E</span>
+			<span className="logo">Student Guides Abroad</span>
 
-			{/* Navigation links - only shown to authenticated users */}
-			{isAuth && (
-				<ul className="nav-list">
-					<li>
-						<NavLink
-							to={'/'}
-							className="nav-link"
-							style={({ isActive }) =>
-								isActive ? activeStyles : undefined
-							}
-						>
-							Home
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							to={'/posts'}
-							className="nav-link"
-							style={({ isActive }) =>
-								isActive ? activeStyles : undefined
-							}
-						>
-							My Posts
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							to={'/new'}
-							className="nav-link"
-							style={({ isActive }) =>
-								isActive ? activeStyles : undefined
-							}
-						>
-							New Post
-						</NavLink>
-					</li>
-				</ul>
-			)}
-
-			{/* Authentication actions */}
-			<div className="auth-btn-container">
-				{isAuth ? (
-					<button onClick={logoutHandler} className="auth-btn">Logout</button>
-				) : (
-					<Link to={'/login'} className="auth-btn">Login</Link>
+			{/* Right side container for navigation and authentication */}
+			<div className="nav-right">
+				{/* Navigation links - only shown to authenticated users */}
+				{isAuth && (
+					<ul className="nav-list">
+						<li>
+							<NavLink
+								to={'/'}
+								className="nav-link"
+								style={({ isActive }) =>
+									isActive ? activeStyles : undefined
+								}
+							>
+								Home
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to={'/posts'}
+								className="nav-link"
+								style={({ isActive }) =>
+									isActive ? activeStyles : undefined
+								}
+							>
+								My Posts
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to={'/new'}
+								className="nav-link"
+								style={({ isActive }) =>
+									isActive ? activeStyles : undefined
+								}
+							>
+								New Post
+							</NavLink>
+						</li>
+					</ul>
 				)}
+
+				{/* Authentication actions */}
+				<div className="auth-btn-container">
+					{isAuth ? (
+						<button onClick={logoutHandler} className="auth-btn">Logout</button>
+					) : (
+						<Link to={'/login'} className="auth-btn">Login</Link>
+					)}
+				</div>
 			</div>
 		</div>
 	)
