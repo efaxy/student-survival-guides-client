@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/student-survival-guides-client/static/css/main.64c6c747.css",
-    "main.js": "/student-survival-guides-client/static/js/main.b5fbe935.js",
+    "main.css": "/student-survival-guides-client/static/css/main.09365c84.css",
+    "main.js": "/student-survival-guides-client/static/js/main.54d624a7.js",
     "index.html": "/student-survival-guides-client/index.html",
-    "main.64c6c747.css.map": "/student-survival-guides-client/static/css/main.64c6c747.css.map",
-    "main.b5fbe935.js.map": "/student-survival-guides-client/static/js/main.b5fbe935.js.map"
+    "main.09365c84.css.map": "/student-survival-guides-client/static/css/main.09365c84.css.map",
+    "main.54d624a7.js.map": "/student-survival-guides-client/static/js/main.54d624a7.js.map"
   },
   "entrypoints": [
-    "static/css/main.64c6c747.css",
-    "static/js/main.b5fbe935.js"
+    "static/css/main.09365c84.css",
+    "static/js/main.54d624a7.js"
   ]
 }
