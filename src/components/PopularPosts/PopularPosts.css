@@ -1,0 +1,19 @@
+.popular-post-item {
+    background-color: #4b5563;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.popular-post-link {
+    display: flex;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    color: #d1d5db;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.popular-post-link:hover {
+    background-color: #1f2937;
+    color: white;
+}
