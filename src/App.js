@@ -10,15 +10,22 @@ import { LoginPage } from './pages/LoginPage/LoginPage'
 import { EditPostPage } from './pages/EditPostPage/EditPostPage'
 import axios from 'axios'
 
+/**
+ * App Component
+ * The root component of the application. Handles routing and global authentication persistence.
+ */
 function App() {
+	// Effect to check authentication status on app load
 	useEffect(() => {
 		const checkAuth = async () => {
 			const userId = window.localStorage.getItem('userId')
 			if (userId) {
 				try {
+					// Verify session validity with the backend
 					await axios.get('/auth/me')
 				} catch (error) {
 					console.log('Session expired or invalid')
+					// Clear invalid session
 					window.localStorage.removeItem('userId')
 				}
 			}
@@ -29,6 +36,7 @@ function App() {
 	return (
 		<Layout>
 			<Routes>
+				{/* Public Routes */}
 				<Route path="/" element={<MainPage />} />
 				<Route path="/posts" element={<PostsPage />} />
 				<Route path=":id" element={<PostPage />} />

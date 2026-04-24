@@ -7,63 +7,89 @@ import { CommentItem } from '../../components/CommentItem/CommentItem'
 import { calculateReadingTime } from '../../utils/readingTime'
 import './PostPage.css'
 
-
+/**
+ * PostPage Component
+ * Displays the full content of a specific post, including metadata, actions (edit/delete), 
+ * and a comments section where users can read and post comments.
+ */
 export const PostPage = () => {
+    // State for storing the post data
     const [post, setPost] = useState(null)
+    // State for the new comment input
     const [comment, setComment] = useState('')
+    // State for storing the list of comments for this post
     const [comments, setComments] = useState([])
+    
+    // URL parameters (specifically the post ID)
     const params = useParams()
+    // Navigation hook for redirecting users
     const navigate = useNavigate()
 
-    // Get user from localStorage
+    // Retrieve the current user's ID from local storage to check for authorship
     const userId = window.localStorage.getItem('userId')
 
+    /**
+     * Fetches post details from the server based on the ID in the URL.
+     */
     const fetchPost = useCallback(async () => {
         try {
             const { data } = await axios.get(`/posts/${params.id}`)
             setPost(data)
         } catch (error) {
-            console.error(error)
+            console.error('Error fetching post:', error)
         }
     }, [params.id])
 
+    /**
+     * Fetches all comments associated with the current post.
+     */
     const fetchComments = useCallback(async () => {
         try {
             const { data } = await axios.get(`/posts/comments/${params.id}`)
             setComments(data)
         } catch (error) {
-            console.error(error)
+            console.error('Error fetching comments:', error)
         }
     }, [params.id])
 
+    // Fetch post data on initial render or when the ID changes
     useEffect(() => {
         fetchPost()
     }, [fetchPost])
 
+    // Fetch comments on initial render or when the ID changes
     useEffect(() => {
         fetchComments()
     }, [fetchComments])
 
+    /**
+     * Deletes the current post and redirects the user to the main page.
+     */
     const removePostHandler = async () => {
         try {
             await axios.delete(`/posts/${params.id}`)
             navigate('/')
         } catch (error) {
-            console.error(error)
+            console.error('Error deleting post:', error)
         }
     }
 
+    /**
+     * Submits a new comment to the server.
+     * After successful submission, resets the input and refreshes the comments and post (to update comment count).
+     */
     const handleSubmit = async () => {
         try {
             await axios.post(`/comments/${params.id}`, { postId: params.id, comment })
             setComment('')
             fetchComments()
-            fetchPost()
+            fetchPost() // Refresh post to update comment count if necessary
         } catch (error) {
-            console.error(error)
+            console.error('Error submitting comment:', error)
         }
     }
 
+    // Show loading state while post data is being fetched
     if (!post) {
         return (
             <div className='post-page'>
@@ -74,6 +100,7 @@ export const PostPage = () => {
 
     return (
         <div className="post-page">
+            {/* Back button to return to the home page */}
             <button
                 className="back-button"
                 onClick={() => navigate('/')}
@@ -81,9 +108,11 @@ export const PostPage = () => {
                 <AiOutlineArrowLeft style={{ marginRight: '8px' }} />
                 Back to Main Page
             </button>
+
             <div className="post-container">
                 <div className="post-content">
                     <div className="post-main">
+                        {/* Metadata section: category, author, date, and reading time */}
                         <div className="post-meta">
                             <div className="post-username">
                                 <span className="post-category-badge">{post.category || 'General'}</span>
@@ -95,11 +124,11 @@ export const PostPage = () => {
                             </div>
                         </div>
 
-
-
+                        {/* Title and main body text */}
                         <h1 className="post-title">{post.title}</h1>
                         <p className="post-full-text">{post.text}</p>
 
+                        {/* Social/Stats section: views and comment count */}
                         <div className="post-actions">
                             <div className="action-button">
                                 <AiFillEye /> <span>{post.views} views</span>
@@ -110,6 +139,7 @@ export const PostPage = () => {
                             </div>
                         </div>
 
+                        {/* Author-only actions: Edit and Delete */}
                         {userId === post.author && (
                             <div className="post-author-actions">
                                 <Link to={`/${params.id}/edit`} className="author-action-btn">
@@ -126,6 +156,7 @@ export const PostPage = () => {
                     </div>
                 </div>
 
+                {/* Comments section */}
                 <div className="comments-section">
                     <div className="comments-list-wrapper">
                         <h3 className="section-title">Comments ({comments?.length || 0})</h3>
@@ -142,6 +173,7 @@ export const PostPage = () => {
                         </div>
                     </div>
 
+                    {/* New Comment Form */}
                     <div className="comment-form-wrapper">
                         <h3 className="section-title">Write a comment</h3>
                         <form
@@ -167,9 +199,7 @@ export const PostPage = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
-
 }
 

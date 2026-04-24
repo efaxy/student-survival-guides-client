@@ -3,28 +3,40 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './RegisterPage.css'
 
+/**
+ * RegisterPage Component
+ * Handles user registration by collecting username and password.
+ */
 export const RegisterPage = () => {
+	// Form state variables
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
+	// Navigation hook
 	const navigate = useNavigate()
 
+	/**
+	 * Submits the registration form to the backend.
+	 * If registration is successful and returns a user, logs them in automatically 
+	 * by setting the userId in localStorage and redirecting to the main page.
+	 */
 	const handleSubmit = async () => {
 		try {
 			const { data } = await axios.post('/auth/register', {
 				username,
 				password,
 			})
-			// If the backend returns a user upon registration, save it and go to main
+			
+			// Auto-login if backend returns user data immediately
 			if (data.user) {
 				window.localStorage.setItem('userId', data.user._id)
 				navigate('/')
 			} else {
-				// Otherwise go to login page
+				// Otherwise, redirect to login page for manual entry
 				navigate('/login')
 			}
 		} catch (error) {
-			console.log(error)
+			console.error('Registration error:', error)
 		}
 	}
 
@@ -35,6 +47,7 @@ export const RegisterPage = () => {
 		>
 			<h1 className="register-title">Sign Up</h1>
 
+			{/* Username Input Field */}
 			<label className="register-label">
 				Username:
 				<input
@@ -46,6 +59,7 @@ export const RegisterPage = () => {
 				/>
 			</label>
 
+			{/* Password Input Field */}
 			<label className="register-label">
 				Password:
 				<input
@@ -57,6 +71,7 @@ export const RegisterPage = () => {
 				/>
 			</label>
 
+			{/* Form Action Buttons */}
 			<div className="register-btns">
 				<button
 					type="submit"
@@ -66,6 +81,7 @@ export const RegisterPage = () => {
 					Confirm
 				</button>
 
+				{/* Redirect to login if user already has an account */}
 				<Link
 					to="/login"
 					className="register-link"

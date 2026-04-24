@@ -2,15 +2,25 @@ import React from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 
+/**
+ * Navbar Component
+ * Provides top-level navigation for the application.
+ * Displays different links and actions based on the user's authentication status.
+ */
 export const Navbar = () => {
 	const navigate = useNavigate()
 
+	// Check if a user ID exists in localStorage to determine auth status
 	const isAuth = Boolean(window.localStorage.getItem('userId'))
 
+	// Styling for the active navigation link
 	const activeStyles = {
 		color: 'white',
 	}
 
+	/**
+	 * Logs the user out by removing the user ID from storage and redirecting to login.
+	 */
 	const logoutHandler = () => {
 		window.localStorage.removeItem('userId')
 		navigate('/login')
@@ -18,8 +28,10 @@ export const Navbar = () => {
 
 	return (
 		<div className="navbar">
+			{/* App Logo */}
 			<span className="logo">E</span>
 
+			{/* Navigation links - only shown to authenticated users */}
 			{isAuth && (
 				<ul className="nav-list">
 					<li>
@@ -58,6 +70,7 @@ export const Navbar = () => {
 				</ul>
 			)}
 
+			{/* Authentication actions */}
 			<div className="auth-btn-container">
 				{isAuth ? (
 					<button onClick={logoutHandler} className="auth-btn">Logout</button>

@@ -3,24 +3,35 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './LoginPage.css'
 
+/**
+ * LoginPage Component
+ * Handles user authentication by collecting credentials and storing the session.
+ */
 export const LoginPage = () => {
+	// Form state variables
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
+	// Navigation hook
 	const navigate = useNavigate()
 
+	/**
+	 * Submits login credentials to the server.
+	 * On success, stores the user ID in localStorage and redirects to the home page.
+	 */
 	const handleSubmit = async () => {
 		try {
 			const { data } = await axios.post('/auth/login', {
 				username,
 				password,
 			})
+			// Store session ID if login is successful
 			if (data.user) {
 				window.localStorage.setItem('userId', data.user._id)
 				navigate('/')
 			}
 		} catch (error) {
-			console.log(error)
+			console.error('Login error:', error)
 		}
 	}
 
@@ -31,6 +42,7 @@ export const LoginPage = () => {
 		>
 			<h1 className="login-title">Authorization</h1>
 
+			{/* Username Field */}
 			<label className="login-label">
 				Username:
 				<input
@@ -42,6 +54,7 @@ export const LoginPage = () => {
 				/>
 			</label>
 
+			{/* Password Field */}
 			<label className="login-label">
 				Password:
 				<input
@@ -53,6 +66,7 @@ export const LoginPage = () => {
 				/>
 			</label>
 
+			{/* Form Actions */}
 			<div className="login-btns">
 				<button
 					type="submit"
@@ -62,6 +76,7 @@ export const LoginPage = () => {
 					Sign In
 				</button>
 
+				{/* Link to registration if user is new */}
 				<Link
 					to="/register"
 					className="login-link"

@@ -3,11 +3,18 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import './EditPostPage.css'
 
+/**
+ * EditPostPage Component
+ * Allows users to modify an existing post.
+ * Fetches current post data on mount and updates it via a PUT request.
+ */
 export const EditPostPage = () => {
+	// Form state variables
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
 	const [category, setCategory] = useState('')
 
+	// Category options consistent with the rest of the app
 	const categories = [
 		'General',
 		'Visa & Documents',
@@ -21,6 +28,10 @@ export const EditPostPage = () => {
 	const navigate = useNavigate()
 	const params = useParams()
 
+	/**
+	 * Fetches the existing post details based on the URL parameter ID.
+	 * populates the form state with the retrieved data.
+	 */
 	const fetchPost = useCallback(async () => {
 		try {
 			const { data } = await axios.get(`/posts/${params.id}`)
@@ -29,10 +40,14 @@ export const EditPostPage = () => {
 			setCategory(data.category || 'General')
 
 		} catch (error) {
-			console.log(error)
+			console.error('Error fetching post for edit:', error)
 		}
 	}, [params.id])
 
+	/**
+	 * Submits the updated post data to the server.
+	 * Redirects to the user's posts list upon success.
+	 */
 	const submitHandler = async () => {
 		try {
 			await axios.put(`/posts/${params.id}`, {
@@ -43,15 +58,19 @@ export const EditPostPage = () => {
 			navigate('/posts')
 
 		} catch (error) {
-			console.log(error)
+			console.error('Error updating post:', error)
 		}
 	}
 
+	/**
+	 * Clears the form fields.
+	 */
 	const clearFormHandler = () => {
 		setTitle('')
 		setText('')
 	}
 
+	// Fetch initial post data when the component mounts or the ID changes
 	useEffect(() => {
 		fetchPost()
 	}, [fetchPost])
@@ -61,6 +80,7 @@ export const EditPostPage = () => {
 			className="edit-post-form"
 			onSubmit={(e) => e.preventDefault()}
 		>
+			{/* Title Edit Field */}
 			<label className="edit-post-label">
 				Title
 				<input
@@ -72,6 +92,7 @@ export const EditPostPage = () => {
 				/>
 			</label>
 
+			{/* Category Selection Dropdown */}
 			<label className="edit-post-label">
 				Category
 				<select
@@ -88,6 +109,7 @@ export const EditPostPage = () => {
 			</label>
 
 
+			{/* Main Text Area */}
 			<label className="edit-post-label">
 				Text
 				<textarea
@@ -98,19 +120,20 @@ export const EditPostPage = () => {
 				/>
 			</label>
 
+			{/* Action Buttons */}
 			<div className="edit-post-actions">
 				<button
 					onClick={submitHandler}
 					className="edit-btn"
 				>
-					Update
+					Update Post
 				</button>
 
 				<button
 					onClick={clearFormHandler}
 					className="cancel-btn"
 				>
-					Cancel
+					Clear Fields
 				</button>
 			</div>
 		</form>

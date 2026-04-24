@@ -3,13 +3,21 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './AddPostPage.css'
 
+/**
+ * AddPostPage Component
+ * Provides a form for users to create a new survival guide post.
+ * Includes fields for title, category selection, and the main text content.
+ */
 export const AddPostPage = () => {
+	// Form state variables
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
 	const [category, setCategory] = useState('General')
 
+	// Navigation hook
 	const navigate = useNavigate()
 
+	// Predefined categories for the dropdown selection
 	const categories = [
 		'General',
 		'Visa & Documents',
@@ -19,6 +27,10 @@ export const AddPostPage = () => {
 		'Life Hacks'
 	]
 
+	/**
+	 * Submits the new post data to the server.
+	 * Redirects to the main page upon successful creation.
+	 */
 	const submitHandler = async () => {
 		try {
 			await axios.post('/posts', {
@@ -28,10 +40,13 @@ export const AddPostPage = () => {
 			})
 			navigate('/')
 		} catch (error) {
-			console.log(error)
+			console.error('Error creating post:', error)
 		}
 	}
 
+	/**
+	 * Resets the form fields to their default values.
+	 */
 	const clearFormHandler = () => {
 		setTitle('')
 		setText('')
@@ -44,17 +59,19 @@ export const AddPostPage = () => {
 			className="add-post-form"
 			onSubmit={(e) => e.preventDefault()}
 		>
+			{/* Title Input */}
 			<label className="add-post-label">
 				Title:
 				<input
 					type="text"
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
-					placeholder="Title"
+					placeholder="Enter post title"
 					className="add-post-input"
 				/>
 			</label>
 
+			{/* Category Dropdown */}
 			<label className="add-post-label">
 				Category:
 				<select
@@ -71,29 +88,31 @@ export const AddPostPage = () => {
 			</label>
 
 
+			{/* Main Text Content */}
 			<label className="add-post-label">
 				Text:
 				<textarea
 					onChange={(e) => setText(e.target.value)}
 					value={text}
-					placeholder="Text"
+					placeholder="Write your guide here..."
 					className="add-post-textarea"
 				/>
 			</label>
 
+			{/* Form Action Buttons */}
 			<div className="add-post-actions">
 				<button
 					onClick={submitHandler}
 					className="add-btn"
 				>
-					Add
+					Add Post
 				</button>
 
 				<button
 					onClick={clearFormHandler}
 					className="cancel-btn"
 				>
-					Cancel
+					Clear Form
 				</button>
 			</div>
 		</form>
