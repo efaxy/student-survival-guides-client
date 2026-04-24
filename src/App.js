@@ -13,16 +13,13 @@ import axios from 'axios'
 function App() {
 	useEffect(() => {
 		const checkAuth = async () => {
-			const token = window.localStorage.getItem('token')
-			if (token) {
+			const userId = window.localStorage.getItem('userId')
+			if (userId) {
 				try {
-					// Проверка токена при загрузке приложения
-					await axios.get('/auth/me', {
-						headers: { Authorization: `Bearer ${token}` }
-					})
+					await axios.get('/auth/me')
 				} catch (error) {
-					console.log('Token expired or invalid')
-					window.localStorage.removeItem('token')
+					console.log('Session expired or invalid')
+					window.localStorage.removeItem('userId')
 				}
 			}
 		}

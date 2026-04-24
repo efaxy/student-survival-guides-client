@@ -15,9 +15,9 @@ export const RegisterPage = () => {
 				username,
 				password,
 			})
-			// If the backend returns a token upon registration, save it and go to main
-			if (data.token) {
-				window.localStorage.setItem('token', data.token)
+			// If the backend returns a user upon registration, save it and go to main
+			if (data.user) {
+				window.localStorage.setItem('userId', data.user._id)
 				navigate('/')
 			} else {
 				// Otherwise go to login page

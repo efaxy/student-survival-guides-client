@@ -5,14 +5,14 @@ import './Navbar.css'
 export const Navbar = () => {
 	const navigate = useNavigate()
 
-	const isAuth = Boolean(window.localStorage.getItem('token'))
+	const isAuth = Boolean(window.localStorage.getItem('userId'))
 
 	const activeStyles = {
 		color: 'white',
 	}
 
 	const logoutHandler = () => {
-		window.localStorage.removeItem('token')
+		window.localStorage.removeItem('userId')
 		navigate('/login')
 	}
 

@@ -15,8 +15,8 @@ export const LoginPage = () => {
 				username,
 				password,
 			})
-			if (data.token) {
-				window.localStorage.setItem('token', data.token)
+			if (data.user) {
+				window.localStorage.setItem('userId', data.user._id)
 				navigate('/')
 			}
 		} catch (error) {
