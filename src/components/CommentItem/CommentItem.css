@@ -1,0 +1,25 @@
+.comment-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.comment-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #93c5fd;
+    font-size: 0.875rem;
+    color: #1f2937;
+}
+
+.comment-text {
+    display: flex;
+    color: #d1d5db;
+    font-size: 10px;
+}
