@@ -1,12 +1,19 @@
 import React from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import './Navbar.css'
-import { Link, NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
-	const isAuth = false
+	const navigate = useNavigate()
+
+	const isAuth = Boolean(window.localStorage.getItem('token'))
 
 	const activeStyles = {
 		color: 'white',
+	}
+
+	const logoutHandler = () => {
+		window.localStorage.removeItem('token')
+		navigate('/login')
 	}
 
 	return (
@@ -15,37 +22,34 @@ export const Navbar = () => {
 
 			{isAuth && (
 				<ul className="nav-list">
-					<li className="nav-link">
+					<li>
 						<NavLink
-							to="/"
-							href="/"
+							to={'/'}
 							className="nav-link"
 							style={({ isActive }) =>
-								isActive ? activeStyles : null
+								isActive ? activeStyles : undefined
 							}
 						>
 							Home
 						</NavLink>
 					</li>
-					<li className="nav-link">
+					<li>
 						<NavLink
-							to="/posts"
-							href="/"
+							to={'/posts'}
 							className="nav-link"
 							style={({ isActive }) =>
-								isActive ? activeStyles : null
+								isActive ? activeStyles : undefined
 							}
 						>
-							Posts
+							My Posts
 						</NavLink>
 					</li>
-					<li className="nav-link">
+					<li>
 						<NavLink
-							to="/new"
-							href="/"
+							to={'/new'}
 							className="nav-link"
 							style={({ isActive }) =>
-								isActive ? activeStyles : null
+								isActive ? activeStyles : undefined
 							}
 						>
 							New Post
@@ -54,11 +58,11 @@ export const Navbar = () => {
 				</ul>
 			)}
 
-			<div className="auth-btn">
+			<div className="auth-btn-container">
 				{isAuth ? (
-					<button>Logout</button>
+					<button onClick={logoutHandler} className="auth-btn">Logout</button>
 				) : (
-					<Link to="/login">Login</Link>
+					<Link to={'/login'} className="auth-btn">Login</Link>
 				)}
 			</div>
 		</div>
