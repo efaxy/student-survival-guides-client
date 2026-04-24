@@ -1,89 +1,93 @@
 .add-post-form {
-    width: 33.333333%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    box-shadow: var(--glass-shadow);
 }
 
 .add-post-label {
-    font-size: 0.75rem;
-    color: white;
-    opacity: 0.7;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 }
 
-.add-post-input {
-    margin-top: 0.25rem;
-    color: black;
-    width: 100%;
-    border-radius: 0.5rem;
-    background-color: #9ca3af;
-    border: 1px solid #d1d5db;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
+.add-post-input,
+.add-post-textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-size: 1rem;
+    transition: var(--transition);
     outline: none;
+    font-family: inherit;
 }
 
-.add-post-input::placeholder {
-    color: #374151;
+.add-post-input:focus,
+.add-post-textarea:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.add-post-input::placeholder,
+.add-post-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .add-post-textarea {
-    margin-top: 0.25rem;
-    color: black;
-    width: 100%;
-    border-radius: 0.5rem;
-    background-color: #9ca3af;
-    border: 1px solid #d1d5db;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
-    outline: none;
-    resize: none;
-    height: 10rem;
-}
-
-.add-post-textarea::placeholder {
-    color: #374151;
+    min-height: 250px;
+    resize: vertical;
 }
 
 .add-post-actions {
     display: flex;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
 .add-btn,
 .cancel-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.75rem;
-    color: white;
-    border-radius: 0.125rem;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: var(--transition);
     border: none;
+    flex: 1;
 }
 
 .add-btn {
-    background-color: #4b5563;
+    background: var(--primary);
+    color: white;
 }
 
 .add-btn:hover {
-    background-color: #374151;
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .cancel-btn {
-    background-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .cancel-btn:hover {
-    background-color: #dc2626;
+    background: #ef4444;
+    color: white;
 }

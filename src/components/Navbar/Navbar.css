@@ -1,60 +1,87 @@
 .navbar {
     display: flex;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1.25rem 2rem;
+    margin-top: 1rem;
     justify-content: space-between;
     align-items: center;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow);
 }
 
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: #4b5563;
-    font-size: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    font-size: 0.875rem;
+    font-weight: 700;
     color: white;
-    border-radius: 0.125rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .nav-list {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
 .nav-link {
-    font-size: 0.75rem;
-    color: #9ca3af;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: var(--transition);
+    position: relative;
 }
 
 .nav-link:hover {
-    color: white;
+    color: var(--text-main);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .auth-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4b5563;
-    border-radius: 0.125rem;
-    padding: 0.5rem 1rem;
+    background: var(--primary);
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.auth-btn-container:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.3);
 }
 
 .auth-btn {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
     color: white;
     background: none;
     border: none;
     cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
 }
+

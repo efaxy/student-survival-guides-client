@@ -2,15 +2,10 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Moment from 'react-moment'
-import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiFillDelete } from 'react-icons/ai'
+import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiFillDelete, AiOutlineArrowLeft } from 'react-icons/ai'
+import { CommentItem } from '../../components/CommentItem/CommentItem'
 import './PostPage.css'
 
-// Placeholder for CommentItem since it's missing in the project
-const CommentItem = ({ cmt }) => (
-    <div className="comment-item">
-        {cmt.comment}
-    </div>
-)
 
 export const PostPage = () => {
     const [post, setPost] = useState(null)
@@ -82,6 +77,7 @@ export const PostPage = () => {
                 className="back-button"
                 onClick={() => navigate('/')}
             >
+                <AiOutlineArrowLeft style={{ marginRight: '8px' }} />
                 Back to Main Page
             </button>
             <div className="post-container">
@@ -94,64 +90,79 @@ export const PostPage = () => {
                             </div>
                         </div>
 
-                        <div className="post-title">{post.title}</div>
-                        <p className="post-text">{post.text}</p>
+                        <h1 className="post-title">{post.title}</h1>
+                        <p className="post-full-text">{post.text}</p>
 
                         <div className="post-actions">
-                            <button className="action-button">
-                                <AiFillEye /> <span>{post.views}</span>
-                            </button>
-                            <button className="action-button">
+                            <div className="action-button">
+                                <AiFillEye /> <span>{post.views} views</span>
+                            </div>
+                            <div className="action-button">
                                 <AiOutlineMessage />{' '}
-                                <span>{post.comments?.length || 0}</span>
-                            </button>
+                                <span>{comments?.length || 0} comments</span>
+                            </div>
                         </div>
 
                         {userId === post.author && (
                             <div className="post-author-actions">
                                 <Link to={`/${params.id}/edit`} className="author-action-btn">
-                                    <AiTwotoneEdit />
+                                    <AiTwotoneEdit /> Edit Post
                                 </Link>
                                 <button
                                     onClick={removePostHandler}
                                     className="author-action-btn delete-btn"
                                 >
-                                    <AiFillDelete />
+                                    <AiFillDelete /> Delete Post
                                 </button>
                             </div>
                         )}
                     </div>
                 </div>
 
-                <div className="comments-sidebar">
-                    <form
-                        className="comment-form"
-                        onSubmit={(e) => e.preventDefault()}
-                    >
-                        <input
-                            type="text"
-                            value={comment}
-                            onChange={(e) => setComment(e.target.value)}
-                            placeholder="Comment"
-                            className="comment-input"
-                        />
-                        <button
-                            type="submit"
-                            onClick={handleSubmit}
-                            className="comment-submit-btn"
-                        >
-                            Send
-                        </button>
-                    </form>
+                <div className="comments-section">
+                    <div className="comments-list-wrapper">
+                        <h3 className="section-title">Comments ({comments?.length || 0})</h3>
+                        <div className="comments-list">
+                            {comments?.length > 0 ? (
+                                comments.map((cmt) => (
+                                    <CommentItem key={cmt._id} cmt={cmt} />
+                                ))
+                            ) : (
+                                <p className="empty-comments">
+                                    No comments yet. Be the first to comment!
+                                </p>
+                            )}
+                        </div>
+                    </div>
 
-                    <div className="comments-list">
-                        {comments?.map((cmt) => (
-                            <CommentItem key={cmt._id} cmt={cmt} />
-                        ))}
+                    <div className="comment-form-wrapper">
+                        <h3 className="section-title">Write a comment</h3>
+                        <form
+                            className="comment-form"
+                            onSubmit={(e) => {
+                                e.preventDefault()
+                                handleSubmit()
+                            }}
+                        >
+                            <textarea
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                placeholder="Share your thoughts..."
+                                className="comment-input"
+                            />
+                            <button
+                                type="submit"
+                                className="comment-submit-btn"
+                            >
+                                Post Comment
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+
         </div>
     )
+
 }
 

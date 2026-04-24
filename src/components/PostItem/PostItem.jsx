@@ -26,6 +26,8 @@ export const PostItem = ({ post }) => {
 				<p className="post-text">
 					{post.text}
 				</p>
+				<div className="read-more">Read more →</div>
+
 
 				<div className="post-actions">
 					<button className="post-action-btn">
