@@ -45,9 +45,7 @@ export const PostsPage = () => {
 					</Link>
 				</div>
 			) : (
-				posts.map((post, idx) => (
-					<PostItem post={post} key={idx} />
-				))
+				posts.map((post, idx) => <PostItem post={post} key={idx} />)
 			)}
 		</div>
 	)

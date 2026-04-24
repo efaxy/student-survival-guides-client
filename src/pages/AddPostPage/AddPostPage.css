@@ -1,109 +1,108 @@
 .add-post-form {
-    max-width: 800px;
-    width: 100%;
-    margin: 3rem auto;
-    padding: 2.5rem;
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    box-shadow: var(--glass-shadow);
+	max-width: 800px;
+	width: 100%;
+	margin: 3rem auto;
+	padding: 2.5rem;
+	background: var(--bg-card);
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	box-shadow: var(--glass-shadow);
 }
 
 .add-post-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--text-main);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--text-main);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
 
 .add-post-input,
 .add-post-textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    color: white;
-    font-size: 1rem;
-    transition: var(--transition);
-    outline: none;
-    font-family: inherit;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 0.75rem 1rem;
+	color: white;
+	font-size: 1rem;
+	transition: var(--transition);
+	outline: none;
+	font-family: inherit;
 }
 
 select.add-post-input {
-    appearance: none;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    background-size: 1em;
-    padding-right: 3rem;
+	appearance: none;
+	cursor: pointer;
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: right 1rem center;
+	background-size: 1em;
+	padding-right: 3rem;
 }
 
 select.add-post-input option {
-    background: #0f172a;
-    color: white;
+	background: #0f172a;
+	color: white;
 }
-
 
 .add-post-input:focus,
 .add-post-textarea:focus {
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+	border-color: var(--primary);
+	background: rgba(255, 255, 255, 0.08);
+	box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 .add-post-input::placeholder,
 .add-post-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+	color: rgba(255, 255, 255, 0.3);
 }
 
 .add-post-textarea {
-    min-height: 250px;
-    resize: vertical;
+	min-height: 250px;
+	resize: vertical;
 }
 
 .add-post-actions {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
+	display: flex;
+	gap: 1.5rem;
+	margin-top: 1rem;
 }
 
 .add-btn,
 .cancel-btn {
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-    flex: 1;
+	padding: 0.75rem 2rem;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: var(--transition);
+	border: none;
+	flex: 1;
 }
 
 .add-btn {
-    background: var(--primary);
-    color: white;
+	background: var(--primary);
+	color: white;
 }
 
 .add-btn:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+	background: var(--primary-hover);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .cancel-btn {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.2);
+	background: rgba(239, 68, 68, 0.1);
+	color: #ef4444;
+	border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .cancel-btn:hover {
-    background: #ef4444;
-    color: white;
+	background: #ef4444;
+	color: white;
 }

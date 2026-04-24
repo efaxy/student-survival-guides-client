@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { PostItem } from '../../components/PostItem/PostItem'
 import { PopularPosts } from '../../components/PopularPosts/PopularPosts'
 import axios from 'axios'
-import { AiOutlineSearch, AiOutlineFire, AiOutlineClockCircle, AiOutlineStar } from 'react-icons/ai'
+import {
+	AiOutlineSearch,
+	AiOutlineFire,
+	AiOutlineClockCircle,
+	AiOutlineStar,
+} from 'react-icons/ai'
 import './MainPage.css'
 
 /**
  * MainPage Component
- * The landing page of the application. Displays a list of all posts with 
+ * The landing page of the application. Displays a list of all posts with
  * searching, filtering by category, and multiple sorting options.
  * Also features a sidebar for popular/trending posts.
  */
@@ -31,7 +36,7 @@ export const MainPage = () => {
 		'Housing',
 		'Healthcare',
 		'Local Integration',
-		'Life Hacks'
+		'Life Hacks',
 	]
 
 	/**
@@ -53,29 +58,33 @@ export const MainPage = () => {
 	}, [])
 
 	/**
-	 * Processed posts: 
+	 * Processed posts:
 	 * 1. Filter by search query (matching title or text)
 	 * 2. Filter by category
 	 * 3. Sort based on the selected sortType
 	 */
 	const processedPosts = posts
-		.filter(post => {
+		.filter((post) => {
 			// Search logic: case-insensitive match in title or body text
-			const matchesSearch = 
+			const matchesSearch =
 				post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 				post.text.toLowerCase().includes(searchQuery.toLowerCase())
-			
+
 			// Category filter logic
-			const matchesCategory = filterCategory === 'All' || post.category === filterCategory
-			
+			const matchesCategory =
+				filterCategory === 'All' || post.category === filterCategory
+
 			return matchesSearch && matchesCategory
 		})
 		.sort((a, b) => {
 			// Sorting logic based on selected type
-			if (sortType === 'newest') return new Date(b.createdAt) - new Date(a.createdAt)
-			if (sortType === 'oldest') return new Date(a.createdAt) - new Date(b.createdAt)
+			if (sortType === 'newest')
+				return new Date(b.createdAt) - new Date(a.createdAt)
+			if (sortType === 'oldest')
+				return new Date(a.createdAt) - new Date(b.createdAt)
 			if (sortType === 'popular') return b.views - a.views
-			if (sortType === 'likes') return (b.likes?.length || 0) - (a.likes?.length || 0)
+			if (sortType === 'likes')
+				return (b.likes?.length || 0) - (a.likes?.length || 0)
 			return 0
 		})
 
@@ -85,9 +94,9 @@ export const MainPage = () => {
 			<div className="search-bar-container">
 				<div className="search-wrapper">
 					<AiOutlineSearch className="search-icon" />
-					<input 
-						type="text" 
-						placeholder="Search guides..." 
+					<input
+						type="text"
+						placeholder="Search guides..."
 						className="search-input"
 						value={searchQuery}
 						onChange={(e) => setSearchQuery(e.target.value)}
@@ -99,8 +108,8 @@ export const MainPage = () => {
 			<div className="filter-controls">
 				{/* Category Tabs */}
 				<div className="category-tabs">
-					{categories.map(cat => (
-						<button 
+					{categories.map((cat) => (
+						<button
 							key={cat}
 							className={`category-tab ${filterCategory === cat ? 'active' : ''}`}
 							onClick={() => setFilterCategory(cat)}
@@ -112,21 +121,21 @@ export const MainPage = () => {
 
 				{/* Sorting Buttons */}
 				<div className="sort-options">
-					<button 
+					<button
 						className={`sort-btn ${sortType === 'newest' ? 'active' : ''}`}
 						onClick={() => setSortType('newest')}
 						title="Newest"
 					>
 						<AiOutlineClockCircle /> Newest
 					</button>
-					<button 
+					<button
 						className={`sort-btn ${sortType === 'popular' ? 'active' : ''}`}
 						onClick={() => setSortType('popular')}
 						title="Popular"
 					>
 						<AiOutlineFire /> Popular
 					</button>
-					<button 
+					<button
 						className={`sort-btn ${sortType === 'likes' ? 'active' : ''}`}
 						onClick={() => setSortType('likes')}
 						title="Most Liked"
@@ -146,18 +155,16 @@ export const MainPage = () => {
 						))
 					) : (
 						<div className="no-posts-message">
-							{searchQuery || filterCategory !== 'All' 
-								? "No guides found with these filters" 
-								: "No guides available yet"}
+							{searchQuery || filterCategory !== 'All'
+								? 'No guides found with these filters'
+								: 'No guides available yet'}
 						</div>
 					)}
 				</div>
 
 				{/* Sidebar for Trending Content */}
 				<div className="posts-sidebar">
-					<div className="sidebar-title">
-						Trending Guides:
-					</div>
+					<div className="sidebar-title">Trending Guides:</div>
 
 					{popularPosts?.map((post, idx) => (
 						<PopularPosts key={idx} post={post} />
@@ -166,4 +173,4 @@ export const MainPage = () => {
 			</div>
 		</div>
 	)
-}
+}

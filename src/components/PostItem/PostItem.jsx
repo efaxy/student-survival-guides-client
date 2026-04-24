@@ -1,4 +1,9 @@
-import { AiFillEye, AiOutlineMessage, AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import {
+	AiFillEye,
+	AiOutlineMessage,
+	AiFillHeart,
+	AiOutlineHeart,
+} from 'react-icons/ai'
 import Moment from 'react-moment'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -8,7 +13,7 @@ import './PostItem.css'
 /**
  * PostItem Component
  * Renders a preview card for a single post.
- * Includes metadata (author, date, category), a snippet of the text, 
+ * Includes metadata (author, date, category), a snippet of the text,
  * and action buttons (views, comments, likes).
  */
 export const PostItem = ({ post }) => {
@@ -35,11 +40,7 @@ export const PostItem = ({ post }) => {
 
 	// Show loading if post data is not yet available
 	if (!post) {
-		return (
-			<div className="loading-message">
-				Loading...
-			</div>
-		)
+		return <div className="loading-message">Loading...</div>
 	}
 
 	// Calculate estimated reading time based on text length
@@ -51,20 +52,23 @@ export const PostItem = ({ post }) => {
 				{/* Top meta information */}
 				<div className="post-meta">
 					<div className="post-info">
-						<span className="post-category">{post.category || 'General'}</span>
+						<span className="post-category">
+							{post.category || 'General'}
+						</span>
 						<span className="post-author"> by {post.username}</span>
 					</div>
 					<div className="post-info">
 						<Moment date={post.createdAt} format="D MMM YYYY" />
-						<span className="reading-time"> • {readingTime} min read</span>
+						<span className="reading-time">
+							{' '}
+							• {readingTime} min read
+						</span>
 					</div>
 				</div>
 
 				{/* Title and Preview Text */}
 				<div className="post-title">{post.title}</div>
-				<p className="post-text">
-					{post.text}
-				</p>
+				<p className="post-text">{post.text}</p>
 				<div className="read-more">Read more →</div>
 
 				{/* Bottom Action Stats */}
@@ -77,7 +81,7 @@ export const PostItem = ({ post }) => {
 						<span>{post.comments?.length || 0} </span>
 					</div>
 					{/* Like Button */}
-					<button 
+					<button
 						className={`post-action-btn like-btn ${isLiked ? 'active' : ''}`}
 						onClick={handleLike}
 					>
@@ -88,4 +92,4 @@ export const PostItem = ({ post }) => {
 			</div>
 		</Link>
 	)
-}
+}

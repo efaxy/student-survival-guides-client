@@ -34,15 +34,14 @@ export const LoginPage = () => {
 		} catch (error) {
 			console.error('Login error:', error)
 			// Display backend error message if available, otherwise a generic one
-			setError(error.response?.data?.message || 'Invalid username or password')
+			setError(
+				error.response?.data?.message || 'Invalid username or password',
+			)
 		}
 	}
 
 	return (
-		<form
-			onSubmit={(e) => e.preventDefault()}
-			className="login-form"
-		>
+		<form onSubmit={(e) => e.preventDefault()} className="login-form">
 			<h1 className="login-title">Authorization</h1>
 
 			{/* Error Message Display */}
@@ -89,10 +88,7 @@ export const LoginPage = () => {
 				</button>
 
 				{/* Link to registration if user is new */}
-				<Link
-					to="/register"
-					className="login-link"
-				>
+				<Link to="/register" className="login-link">
 					Don't have an account?
 				</Link>
 			</div>

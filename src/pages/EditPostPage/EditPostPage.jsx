@@ -21,9 +21,8 @@ export const EditPostPage = () => {
 		'Housing',
 		'Healthcare',
 		'Local Integration',
-		'Life Hacks'
+		'Life Hacks',
 	]
-
 
 	const navigate = useNavigate()
 	const params = useParams()
@@ -38,7 +37,6 @@ export const EditPostPage = () => {
 			setTitle(data.title)
 			setText(data.text)
 			setCategory(data.category || 'General')
-
 		} catch (error) {
 			console.error('Error fetching post for edit:', error)
 		}
@@ -53,10 +51,9 @@ export const EditPostPage = () => {
 			await axios.put(`/posts/${params.id}`, {
 				title,
 				text,
-				category
+				category,
 			})
 			navigate('/posts')
-
 		} catch (error) {
 			console.error('Error updating post:', error)
 		}
@@ -76,10 +73,7 @@ export const EditPostPage = () => {
 	}, [fetchPost])
 
 	return (
-		<form
-			className="edit-post-form"
-			onSubmit={(e) => e.preventDefault()}
-		>
+		<form className="edit-post-form" onSubmit={(e) => e.preventDefault()}>
 			{/* Title Edit Field */}
 			<label className="edit-post-label">
 				Title
@@ -108,7 +102,6 @@ export const EditPostPage = () => {
 				</select>
 			</label>
 
-
 			{/* Main Text Area */}
 			<label className="edit-post-label">
 				Text
@@ -122,17 +115,11 @@ export const EditPostPage = () => {
 
 			{/* Action Buttons */}
 			<div className="edit-post-actions">
-				<button
-					onClick={submitHandler}
-					className="edit-btn"
-				>
+				<button onClick={submitHandler} className="edit-btn">
 					Update Post
 				</button>
 
-				<button
-					onClick={clearFormHandler}
-					className="cancel-btn"
-				>
+				<button onClick={clearFormHandler} className="cancel-btn">
 					Clear Fields
 				</button>
 			</div>

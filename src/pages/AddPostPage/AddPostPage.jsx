@@ -24,7 +24,7 @@ export const AddPostPage = () => {
 		'Housing',
 		'Healthcare',
 		'Local Integration',
-		'Life Hacks'
+		'Life Hacks',
 	]
 
 	/**
@@ -36,7 +36,7 @@ export const AddPostPage = () => {
 			await axios.post('/posts', {
 				title,
 				text,
-				category
+				category,
 			})
 			navigate('/')
 		} catch (error) {
@@ -53,12 +53,8 @@ export const AddPostPage = () => {
 		setCategory('General')
 	}
 
-
 	return (
-		<form
-			className="add-post-form"
-			onSubmit={(e) => e.preventDefault()}
-		>
+		<form className="add-post-form" onSubmit={(e) => e.preventDefault()}>
 			{/* Title Input */}
 			<label className="add-post-label">
 				Title:
@@ -87,7 +83,6 @@ export const AddPostPage = () => {
 				</select>
 			</label>
 
-
 			{/* Main Text Content */}
 			<label className="add-post-label">
 				Text:
@@ -101,17 +96,11 @@ export const AddPostPage = () => {
 
 			{/* Form Action Buttons */}
 			<div className="add-post-actions">
-				<button
-					onClick={submitHandler}
-					className="add-btn"
-				>
+				<button onClick={submitHandler} className="add-btn">
 					Add Post
 				</button>
 
-				<button
-					onClick={clearFormHandler}
-					className="cancel-btn"
-				>
+				<button onClick={clearFormHandler} className="cancel-btn">
 					Clear Form
 				</button>
 			</div>

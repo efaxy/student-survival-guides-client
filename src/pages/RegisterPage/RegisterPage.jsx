@@ -18,7 +18,7 @@ export const RegisterPage = () => {
 
 	/**
 	 * Submits the registration form to the backend.
-	 * If registration is successful and returns a user, logs them in automatically 
+	 * If registration is successful and returns a user, logs them in automatically
 	 * by setting the userId in localStorage and redirecting to the main page.
 	 */
 	const handleSubmit = async () => {
@@ -37,7 +37,9 @@ export const RegisterPage = () => {
 
 			const symbolRegex = /[^a-zA-Z0-9\s]/
 			if (!symbolRegex.test(password)) {
-				setStatus('Password must contain at least one special character')
+				setStatus(
+					'Password must contain at least one special character',
+				)
 				return
 			}
 
@@ -61,10 +63,7 @@ export const RegisterPage = () => {
 	}
 
 	return (
-		<form
-			onSubmit={(e) => e.preventDefault()}
-			className="register-form"
-		>
+		<form onSubmit={(e) => e.preventDefault()} className="register-form">
 			<h1 className="register-title">Sign Up</h1>
 
 			{status && <div className="register-status">{status}</div>}
@@ -110,10 +109,7 @@ export const RegisterPage = () => {
 				</button>
 
 				{/* Redirect to login if user already has an account */}
-				<Link
-					to="/login"
-					className="register-link"
-				>
+				<Link to="/login" className="register-link">
 					Already registered ?
 				</Link>
 			</div>

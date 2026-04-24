@@ -1,105 +1,112 @@
 .register-form {
-    max-width: 400px;
-    width: 100%;
-    margin: 8rem auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2.5rem;
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--glass-shadow);
+	max-width: 400px;
+	width: 100%;
+	margin: 8rem auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 2.5rem;
+	background: var(--bg-card);
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--glass-shadow);
 }
 
 .register-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-main);
-    text-align: center;
-    margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--text-main);
+	text-align: center;
+	margin-bottom: 0.5rem;
 }
 
 .register-status {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    color: #ef4444;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    text-align: center;
-    animation: shake 0.4s ease-in-out;
+	background: rgba(239, 68, 68, 0.1);
+	border: 1px solid rgba(239, 68, 68, 0.2);
+	color: #ef4444;
+	padding: 0.75rem;
+	border-radius: 8px;
+	font-size: 0.85rem;
+	text-align: center;
+	animation: shake 0.4s ease-in-out;
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-5px);
+	}
+	75% {
+		transform: translateX(5px);
+	}
 }
 
 .register-label {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--text-muted);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
 
 .register-input {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    color: white;
-    font-size: 0.9rem;
-    transition: var(--transition);
-    outline: none;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 0.75rem 1rem;
+	color: white;
+	font-size: 0.9rem;
+	transition: var(--transition);
+	outline: none;
 }
 
 .register-input:focus {
-    border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+	border-color: var(--primary);
+	background: rgba(255, 255, 255, 0.08);
+	box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 .register-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+	color: rgba(255, 255, 255, 0.3);
 }
 
 .register-btns {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1rem;
 }
 
 .register-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
+	width: 100%;
+	padding: 0.75rem;
+	background: var(--primary);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: var(--transition);
 }
 
 .register-btn:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
+	background: var(--primary-hover);
+	transform: translateY(-1px);
 }
 
 .register-link {
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    transition: var(--transition);
+	text-align: center;
+	font-size: 0.85rem;
+	color: var(--text-muted);
+	transition: var(--transition);
 }
 
 .register-link:hover {
-    color: var(--primary);
+	color: var(--primary);
 }

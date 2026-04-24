@@ -75,9 +75,13 @@ export const Navbar = () => {
 				{/* Authentication actions */}
 				<div className="auth-btn-container">
 					{isAuth ? (
-						<button onClick={logoutHandler} className="auth-btn">Logout</button>
+						<button onClick={logoutHandler} className="auth-btn">
+							Logout
+						</button>
 					) : (
-						<Link to={'/login'} className="auth-btn">Login</Link>
+						<Link to={'/login'} className="auth-btn">
+							Login
+						</Link>
 					)}
 				</div>
 			</div>
