@@ -7,7 +7,7 @@ import axios from 'axios'
 
 // Configure global Axios settings
 // Base URL for all API requests to the backend server
-axios.defaults.baseURL = 'http://localhost:3001/api'
+axios.defaults.baseURL = (process.env.REACT_APP_API_URL || 'http://localhost:3001') + '/api'
 
 /**
  * Axios Request Interceptor
@@ -25,7 +25,7 @@ axios.interceptors.request.use((config) => {
 // Initialize the React application
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<BrowserRouter>
+	<BrowserRouter basename="/student-survival-guides-client">
 		<App />
 	</BrowserRouter>,
 )
