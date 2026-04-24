@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/student-survival-guides-client/static/css/main.64c6c747.css",
+    "main.js": "/student-survival-guides-client/static/js/main.b5fbe935.js",
+    "index.html": "/student-survival-guides-client/index.html",
+    "main.64c6c747.css.map": "/student-survival-guides-client/static/css/main.64c6c747.css.map",
+    "main.b5fbe935.js.map": "/student-survival-guides-client/static/js/main.b5fbe935.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64c6c747.css",
+    "static/js/main.b5fbe935.js"
+  ]
+}
