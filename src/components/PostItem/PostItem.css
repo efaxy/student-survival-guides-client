@@ -1,0 +1,73 @@
+.loading-message {
+    font-size: 1.25rem;
+    text-align: center;
+    color: white;
+    padding: 2.5rem 0;
+}
+
+.post-item-link {
+    text-decoration: none;
+}
+
+.post-item {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+}
+
+.post-info {
+    font-size: 0.75rem;
+    color: white;
+    opacity: 0.5;
+}
+
+.post-title {
+    color: white;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.post-text {
+    color: white;
+    opacity: 0.6;
+    font-size: 0.75rem;
+    padding-top: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.post-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: white;
+    opacity: 0.5;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.post-action-btn:hover {
+    opacity: 1;
+}
