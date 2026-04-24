@@ -4,6 +4,7 @@ import axios from 'axios'
 import Moment from 'react-moment'
 import { AiFillEye, AiOutlineMessage, AiTwotoneEdit, AiFillDelete, AiOutlineArrowLeft } from 'react-icons/ai'
 import { CommentItem } from '../../components/CommentItem/CommentItem'
+import { calculateReadingTime } from '../../utils/readingTime'
 import './PostPage.css'
 
 
@@ -87,8 +88,10 @@ export const PostPage = () => {
                             <div className="post-username">{post.username}</div>
                             <div className="post-date">
                                 <Moment date={post.createdAt} format="DD MMM YYYY" />
+                                <span className="reading-time"> • {calculateReadingTime(post.text)} min read</span>
                             </div>
                         </div>
+
 
                         <h1 className="post-title">{post.title}</h1>
                         <p className="post-full-text">{post.text}</p>

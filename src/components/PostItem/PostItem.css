@@ -46,6 +46,12 @@
     font-weight: 500;
 }
 
+.reading-time {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+
 .post-title {
     color: var(--text-main);
     font-size: 1.25rem;

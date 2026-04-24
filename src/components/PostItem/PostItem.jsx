@@ -2,6 +2,7 @@ import React from 'react'
 import { AiFillEye, AiOutlineMessage } from 'react-icons/ai'
 import Moment from 'react-moment'
 import { Link } from 'react-router-dom'
+import { calculateReadingTime } from '../../utils/readingTime'
 import './PostItem.css'
 
 export const PostItem = ({ post }) => {
@@ -13,6 +14,8 @@ export const PostItem = ({ post }) => {
 		)
 	}
 
+	const readingTime = calculateReadingTime(post.text)
+
 	return (
 		<Link to={`/${post._id}`} className="post-item-link">
 			<div className="post-item">
@@ -20,8 +23,10 @@ export const PostItem = ({ post }) => {
 					<div className="post-info">{post.username}</div>
 					<div className="post-info">
 						<Moment date={post.createdAt} format="D MMM YYYY" />
+						<span className="reading-time"> • {readingTime} min read</span>
 					</div>
 				</div>
+
 				<div className="post-title">{post.title}</div>
 				<p className="post-text">
 					{post.text}

@@ -5,6 +5,47 @@
     padding: 5rem 0;
 }
 
+.search-bar-container {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.25rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3.5rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    background: rgba(30, 41, 59, 0.9);
+}
+
+
 .main-container {
     max-width: 1200px;
     margin: 0 auto;
