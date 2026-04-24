@@ -8,7 +8,7 @@ import './PostPage.css'
 
 // Placeholder for CommentItem since it's missing in the project
 const CommentItem = ({ cmt }) => (
-    <div className='bg-gray-600 p-2 rounded-sm text-xs'>
+    <div className="comment-item">
         {cmt.comment}
     </div>
 )
@@ -37,15 +37,23 @@ export const PostPage = () => {
         fetchPost()
     }, [fetchPost])
 
-    const removePostHandler = () => {
-        // Implement post removal logic here
-        console.log('Remove post')
+    const removePostHandler = async () => {
+        try {
+            await axios.delete(`/posts/${params.id}`)
+            navigate('/')
+        } catch (error) {
+            console.error(error)
+        }
     }
 
-    const handleSubmit = () => {
-        // Implement comment submission logic here
-        console.log('Submit comment:', comment)
-        setComment('')
+    const handleSubmit = async () => {
+        try {
+            await axios.post(`/comments/${params.id}`, { postId: params.id, comment })
+            setComment('')
+            fetchPost()
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     if (!post) {
@@ -88,15 +96,13 @@ export const PostPage = () => {
                         </div>
 
                         {user?._id === post.author && (
-                            <div className='flex gap-3 mt-4'>
-                                <button className='flex items-center justify-center gap-2 text-white opacity-50'>
-                                    <Link to={`/${params.id}/edit`}>
-                                        <AiTwotoneEdit />
-                                    </Link>
-                                </button>
+                            <div className="post-author-actions">
+                                <Link to={`/${params.id}/edit`} className="author-action-btn">
+                                    <AiTwotoneEdit />
+                                </Link>
                                 <button
                                     onClick={removePostHandler}
-                                    className='flex items-center justify-center gap-2 text-white opacity-50'
+                                    className="author-action-btn delete-btn"
                                 >
                                     <AiFillDelete />
                                 </button>
@@ -105,30 +111,32 @@ export const PostPage = () => {
                     </div>
                 </div>
 
-                <div className='comments-sidebar w-1/3 p-8 bg-gray-700 flex flex-col gap-2 rounded-sm'>
+                <div className="comments-sidebar">
                     <form
-                        className='flex gap-2'
+                        className="comment-form"
                         onSubmit={(e) => e.preventDefault()}
                     >
                         <input
-                            type='text'
+                            type="text"
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
-                            placeholder='Comment'
-                            className='text-black w-full rounded-sm bg-gray-400 border p-2 text-xs outline-none placeholder:text-gray-700'
+                            placeholder="Comment"
+                            className="comment-input"
                         />
                         <button
-                            type='submit'
+                            type="submit"
                             onClick={handleSubmit}
-                            className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-4'
+                            className="comment-submit-btn"
                         >
                             Send
                         </button>
                     </form>
 
-                    {comments?.map((cmt) => (
-                        <CommentItem key={cmt._id} cmt={cmt} />
-                    ))}
+                    <div className="comments-list">
+                        {comments?.map((cmt) => (
+                            <CommentItem key={cmt._id} cmt={cmt} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

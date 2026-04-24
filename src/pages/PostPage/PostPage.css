@@ -1,0 +1,93 @@
+/* Container for author actions */
+.post-author-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* Base button style for author actions */
+.author-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: white;
+    opacity: 0.5;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.author-action-btn:hover {
+    opacity: 1;
+}
+
+/* Sidebar for comments */
+.comments-sidebar {
+    width: 33.333333%;
+    padding: 2rem;
+    background-color: #374151;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 0.125rem;
+}
+
+/* Comment form layout */
+.comment-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Comment input field */
+.comment-input {
+    color: black;
+    width: 100%;
+    border-radius: 0.125rem;
+    background-color: #9ca3af;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    outline: none;
+}
+
+.comment-input::placeholder {
+    color: #374151;
+}
+
+/* Comment submit button */
+.comment-submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4b5563;
+    font-size: 0.75rem;
+    color: white;
+    border-radius: 0.125rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-submit-btn:hover {
+    background-color: #374151;
+}
+
+/* List container for comments */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Individual comment item */
+.comment-item {
+    background-color: #4b5563;
+    padding: 0.5rem;
+    border-radius: 0.125rem;
+    font-size: 0.75rem;
+    color: white;
+}
