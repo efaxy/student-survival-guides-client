@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import './AddPostPage.css'
 
 export const AddPostPage = () => {
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
+
 	const navigate = useNavigate()
 
-	const submitHandler = () => {
+	const submitHandler = async () => {
 		try {
-			const data = new FormData()
-			data.append('title', title)
-			data.append('text', text)
+			await axios.post('/posts', {
+				title,
+				text,
+			})
 			navigate('/')
 		} catch (error) {
 			console.log(error)
@@ -24,33 +27,43 @@ export const AddPostPage = () => {
 	}
 
 	return (
-		<form className="addPostPage" onSubmit={(e) => e.preventDefault()}>
-			<label className="title">
-				Title
+		<form
+			className="add-post-form"
+			onSubmit={(e) => e.preventDefault()}
+		>
+			<label className="add-post-label">
+				Title:
 				<input
 					type="text"
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
-					className="for-title"
 					placeholder="Title"
+					className="add-post-input"
 				/>
 			</label>
 
-			<label className="text">
-				Text
+			<label className="add-post-label">
+				Text:
 				<textarea
-					value={text}
 					onChange={(e) => setText(e.target.value)}
-					className="for-text"
+					value={text}
 					placeholder="Text"
+					className="add-post-textarea"
 				/>
 			</label>
 
-			<div className="buttons-container">
-				<button onClick={submitHandler} className="add-button">
+			<div className="add-post-actions">
+				<button
+					onClick={submitHandler}
+					className="add-btn"
+				>
 					Add
 				</button>
-				<button onClick={clearFormHandler} className="cancel-button">
+
+				<button
+					onClick={clearFormHandler}
+					className="cancel-btn"
+				>
 					Cancel
 				</button>
 			</div>
