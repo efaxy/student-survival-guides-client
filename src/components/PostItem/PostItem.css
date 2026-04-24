@@ -41,10 +41,29 @@
 }
 
 .post-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 500;
 }
+
+.post-category {
+    background: var(--primary);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.post-author {
+    opacity: 0.8;
+}
+
 
 .reading-time {
     color: var(--primary);
@@ -114,7 +133,16 @@
 }
 
 .post-action-btn:hover {
-    color: var(--primary);
+    color: var(--text-main);
+}
+
+.like-btn.active {
+    color: #ef4444;
+}
+
+.like-btn:hover {
+    color: #f87171;
+    transform: scale(1.1);
 }
 
 .post-action-btn svg {

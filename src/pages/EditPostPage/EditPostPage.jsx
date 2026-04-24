@@ -6,6 +6,17 @@ import './EditPostPage.css'
 export const EditPostPage = () => {
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
+	const [category, setCategory] = useState('')
+
+	const categories = [
+		'General',
+		'Visa & Documents',
+		'Housing',
+		'Healthcare',
+		'Local Integration',
+		'Life Hacks'
+	]
+
 
 	const navigate = useNavigate()
 	const params = useParams()
@@ -15,6 +26,8 @@ export const EditPostPage = () => {
 			const { data } = await axios.get(`/posts/${params.id}`)
 			setTitle(data.title)
 			setText(data.text)
+			setCategory(data.category || 'General')
+
 		} catch (error) {
 			console.log(error)
 		}
@@ -25,8 +38,10 @@ export const EditPostPage = () => {
 			await axios.put(`/posts/${params.id}`, {
 				title,
 				text,
+				category
 			})
 			navigate('/posts')
+
 		} catch (error) {
 			console.log(error)
 		}
@@ -56,6 +71,22 @@ export const EditPostPage = () => {
 					className="edit-post-input"
 				/>
 			</label>
+
+			<label className="edit-post-label">
+				Category
+				<select
+					value={category}
+					onChange={(e) => setCategory(e.target.value)}
+					className="edit-post-input"
+				>
+					{categories.map((cat) => (
+						<option key={cat} value={cat}>
+							{cat}
+						</option>
+					))}
+				</select>
+			</label>
+
 
 			<label className="edit-post-label">
 				Text

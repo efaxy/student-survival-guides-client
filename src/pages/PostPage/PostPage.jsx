@@ -85,12 +85,16 @@ export const PostPage = () => {
                 <div className="post-content">
                     <div className="post-main">
                         <div className="post-meta">
-                            <div className="post-username">{post.username}</div>
+                            <div className="post-username">
+                                <span className="post-category-badge">{post.category || 'General'}</span>
+                                <span className="post-author-name">by {post.username}</span>
+                            </div>
                             <div className="post-date">
                                 <Moment date={post.createdAt} format="DD MMM YYYY" />
                                 <span className="reading-time"> • {calculateReadingTime(post.text)} min read</span>
                             </div>
                         </div>
+
 
 
                         <h1 className="post-title">{post.title}</h1>
