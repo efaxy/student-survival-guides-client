@@ -11,6 +11,7 @@ export const LoginPage = () => {
 	// Form state variables
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [error, setError] = useState('')
 
 	// Navigation hook
 	const navigate = useNavigate()
@@ -32,6 +33,8 @@ export const LoginPage = () => {
 			}
 		} catch (error) {
 			console.error('Login error:', error)
+			// Display backend error message if available, otherwise a generic one
+			setError(error.response?.data?.message || 'Invalid username or password')
 		}
 	}
 
@@ -42,13 +45,19 @@ export const LoginPage = () => {
 		>
 			<h1 className="login-title">Authorization</h1>
 
+			{/* Error Message Display */}
+			{error && <div className="login-error">{error}</div>}
+
 			{/* Username Field */}
 			<label className="login-label">
 				Username:
 				<input
 					type="text"
 					value={username}
-					onChange={(e) => setUsername(e.target.value)}
+					onChange={(e) => {
+						setUsername(e.target.value)
+						setError('') // Clear error on change
+					}}
 					placeholder="Username"
 					className="login-input"
 				/>
@@ -60,7 +69,10 @@ export const LoginPage = () => {
 				<input
 					type="password"
 					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					onChange={(e) => {
+						setPassword(e.target.value)
+						setError('') // Clear error on change
+					}}
 					placeholder="Password"
 					className="login-input"
 				/>

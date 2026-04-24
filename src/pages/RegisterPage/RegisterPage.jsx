@@ -75,7 +75,10 @@ export const RegisterPage = () => {
 				<input
 					type="text"
 					value={username}
-					onChange={(e) => setUsername(e.target.value)}
+					onChange={(e) => {
+						setUsername(e.target.value)
+						setStatus('')
+					}}
 					placeholder="Username"
 					className="register-input"
 				/>
@@ -87,7 +90,10 @@ export const RegisterPage = () => {
 				<input
 					type="password"
 					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					onChange={(e) => {
+						setPassword(e.target.value)
+						setStatus('')
+					}}
 					placeholder="Password"
 					className="register-input"
 				/>
