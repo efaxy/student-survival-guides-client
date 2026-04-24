@@ -11,6 +11,7 @@ export const RegisterPage = () => {
 	// Form state variables
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [status, setStatus] = useState('')
 
 	// Navigation hook
 	const navigate = useNavigate()
@@ -22,11 +23,29 @@ export const RegisterPage = () => {
 	 */
 	const handleSubmit = async () => {
 		try {
+			// Frontend Validation
+			const usernameRegex = /^[a-zA-Z]+$/
+			if (!usernameRegex.test(username)) {
+				setStatus('Username must contain only English letters')
+				return
+			}
+
+			if (password.length < 6) {
+				setStatus('Password must be at least 6 characters long')
+				return
+			}
+
+			const symbolRegex = /[^a-zA-Z0-9\s]/
+			if (!symbolRegex.test(password)) {
+				setStatus('Password must contain at least one special character')
+				return
+			}
+
 			const { data } = await axios.post('/auth/register', {
 				username,
 				password,
 			})
-			
+
 			// Auto-login if backend returns user data immediately
 			if (data.user) {
 				window.localStorage.setItem('userId', data.user._id)
@@ -37,6 +56,7 @@ export const RegisterPage = () => {
 			}
 		} catch (error) {
 			console.error('Registration error:', error)
+			setStatus(error.response?.data?.message || 'Registration failed')
 		}
 	}
 
@@ -46,6 +66,8 @@ export const RegisterPage = () => {
 			className="register-form"
 		>
 			<h1 className="register-title">Sign Up</h1>
+
+			{status && <div className="register-status">{status}</div>}
 
 			{/* Username Input Field */}
 			<label className="register-label">
