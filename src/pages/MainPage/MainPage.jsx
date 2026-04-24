@@ -1,17 +1,33 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { PostItem } from '../../components/PostItem/PostItem'
 import { PopularPosts } from '../../components/PopularPosts/PopularPosts'
+import axios from 'axios'
 import './MainPage.css'
 
 export const MainPage = () => {
-	const dispatch = useDispatch();
-	const { posts, popularPosts } = useSelector((state) => state.post);
+	const [posts, setPosts] = useState([])
+	const [popularPosts, setPopularPosts] = useState([])
 
-	console.log(popularPosts);
+	const fetchPosts = async () => {
+		try {
+			const { data } = await axios.get('/posts')
+			setPosts(data.posts || data || [])
+			setPopularPosts(data.popularPosts || [])
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	useEffect(() => {
+		fetchPosts()
+	}, [])
 
 	if (!posts.length) {
-		return <div className="no-posts-message">No Posts</div>
+		return (
+			<div className="no-posts-message">
+				No Posts
+			</div>
+		)
 	}
 
 	return (
@@ -22,9 +38,11 @@ export const MainPage = () => {
 						<PostItem key={idx} post={post} />
 					))}
 				</div>
-
 				<div className="posts-sidebar">
-					<div className="sidebar-title">Popular:</div>
+					<div className="sidebar-title">
+						Popular:
+					</div>
+
 					{popularPosts?.map((post, idx) => (
 						<PopularPosts key={idx} post={post} />
 					))}
